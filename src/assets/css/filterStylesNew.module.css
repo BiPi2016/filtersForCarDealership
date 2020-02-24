@@ -1,0 +1,229 @@
+* {
+    box-sizing: border-box;
+}
+
+.someClass{
+    background-color: red;
+}
+
+.filtersButtonCheckbox,
+.smallScreenFiltersTriggerOpen,
+.smallScreenFiltersTriggerClose {
+    display: none;
+}
+
+/* Form sections */
+.upperFilters {
+    display: flex;
+}
+
+.filterTerm {
+    width: 300px;
+    border: 2px solid;
+}
+
+.centeredFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.filterHeading {
+    user-select: none;
+}
+
+.filterTerm,
+.filterField {
+    padding: 5px;
+}
+
+select.filterField {
+    width: 100%;
+    border-radius: 3px;
+    margin-bottom: 5px;
+}
+
+.lowerFilters {
+    display: flex;
+    min-width: auto;
+}
+/* BodyType Selector */
+.filterBodytype {
+    width: auto;
+}
+.bodytypeContainer {
+    display: grid;
+    grid-template-columns: repeat(8, minmax(80px, 1fr));
+    gap: 7px;    
+}
+
+.bodytypeCheckbox {
+    display: none;
+}
+
+.labelContainer {
+    padding: 0;
+    border: 1px solid rgba(147, 149, 184, 0.5); ;
+    border-radius: 5px;
+    position: relative;
+}
+.bodytypeCheckbox:checked ~ .labelContainer {
+    background-color: rgba(147, 149, 184, 0.3);
+    border-color: #5941A9;
+    box-shadow: inset 0 0 5px #5941A9;
+}
+
+.bodytypeLabel {
+    padding: 0;
+    display: block;
+    border: 1px solid transparent;
+}
+
+.bodytypeText {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    font-size: 0.9em;
+    text-align: center;
+    text-transform: capitalize;
+    z-index: 2;
+    user-select: none;
+}
+
+
+/* Colour Selector */
+.colorContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.colorCheckboxContainer {
+    margin: 3px 8px;
+}
+
+.colorCirlce {
+    border: 1px solid transparent;
+    border-radius: 50%;
+    width: 1.3em;
+    height: 1.3em;
+}
+
+.colorCheckbox {
+    display: none;
+}
+.colorCheckbox:checked ~ label .selectedColorTick {
+    display: inline-block;
+}
+.selectedColorTick {
+    color: #ffffff;
+    user-select: none;
+    font-size: 1.3em;
+    display: none;
+}
+
+
+.formButtons {
+    min-height: 30px;
+    min-width: 120px;
+    max-width: 20%;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+@media only screen /* 
+  and (min-device-width: 300px)  */
+  and (max-device-width: 880px) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+    /* Filters button */
+    .smallScreenFiltersTriggerOpen {
+        display: block;
+    }
+    .openFiltersButton {
+        border: 1px solid gray;
+        border-radius: 5px;
+        box-shadow: inset 0px 0px 3px gray;
+        color: gray;
+    }
+    .openFiltersButton:hover {
+        cursor: pointer;
+    }
+    .openFiltersButton > * {
+        margin: 5px;
+    }
+    .filtersButtonCheckbox {
+        display: none;
+    }
+    .filtersButtonCheckbox:checked ~ .filtersForm {
+        transform: scale(1);
+        height: auto;
+    }
+    .filtersButtonCheckbox:checked ~ .smallScreenFiltersTriggerOpen {
+        display: none;
+    }
+    .filters-button-checkbox:checked ~ .smallScreenFiltersTriggerOpenClose {
+        display: flex;
+        justify-content: flex-end;
+        padding: 1em;
+        text-decoration: underline;
+    }
+
+    /* Sections in the form */
+    .filtersForm {
+        box-sizing: border-box;
+        transform: scaleY(0);
+        height: 0;
+        transition: transform 200ms ease-in-out;
+        transform-origin: top;
+    }
+    .upperFilters {
+        display: flex; 
+        flex-wrap: wrap; 
+        justify-content: space-between;  
+    }
+    .filterTerm {
+        width: 98%;
+    }
+
+    .lowerFilters {
+        display: block;
+    }
+
+    .filterBodytype,
+    .colorFilter {
+        min-width: 98%;
+    }
+
+    .bodytypeContainer {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .bodytypeTerm {
+        width: 98%;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid gray;
+    }
+    .bodytypeCheckbox {
+        display: block;
+    }
+    .bodytypeLabel {
+        width: 100%;
+    }
+    .labelContainer {
+        border-color: transparent;
+        width: 100%;
+    }
+    .bodytypeCheckbox:checked ~ .labelContainer {
+        background-color:unset;
+        box-shadow: unset;
+        border-color: transparent;
+    }
+    .bodytypeText {
+        text-align: left;
+        font-size: 1em;
+        font-weight: 150;
+    }
+}
+
+
