@@ -11,7 +11,7 @@
 /* Form sections */
 .upperFilters {
     display: flex;
-    border: 1px solid green;
+    justify-content: space-evenly;
 }
 
 .filterTerm {

@@ -6,7 +6,6 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 import 'react-bulma-components/dist/react-bulma-components.min.css';
 import filterStyles from '../../assets/css//filterStylesNew.module.css';
-import bulmaClasses from '../../assets/css//bulma.module.css';
 
 const Select = (props) => {
     return(
@@ -14,7 +13,7 @@ const Select = (props) => {
             <div className={["select", filterStyles.padded].join(' ')}>
                 <select name={props.filter.name} >
                     {props.filter.optionList.map( item => <SelectOption 
-                        value={item} key={item.toString()}/> )}
+                        value={item} key={item.toString()} className={filterStyles.selectText} /> )}
                 </select>
             </div>
             <span className={["icon", "is-left"].join(' ')}>
