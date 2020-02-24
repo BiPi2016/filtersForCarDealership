@@ -11,12 +11,16 @@
 /* Form sections */
 .upperFilters {
     display: flex;
+    border: 1px solid green;
 }
 
 .filterTerm {
-    width: 300px;
+    width: 250px;
 }
-
+.select{
+    margin-bottom: 5px;
+    width: 100%;
+}
 
 .centeredFlex {
     display: flex;
@@ -26,11 +30,20 @@
 
 .filterHeading {
     user-select: none;
+    text-transform: capitalize;
 }
 
 .filterTerm,
 .filterField {
     padding: 5px;
+}
+
+.padded{
+    width: 100%;
+}
+
+.padded select{
+    width: 100%;
 }
 
 select.filterField {
@@ -83,6 +96,10 @@ select.filterField {
     text-transform: capitalize;
     z-index: 2;
     user-select: none;
+}
+
+.selectOption{
+    text-transform: capitalize;
 }
 
 
@@ -171,9 +188,8 @@ select.filterField {
         transform-origin: top;
     }
     .upperFilters {
-        display: flex; 
-        flex-wrap: wrap; 
-        justify-content: space-between;  
+        display: block;
+        margin-bottom: 10px; 
     }
     .filterTerm {
         width: 98%;

@@ -5,12 +5,13 @@ import SelectOption from '../selectOption/selectOption';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 import 'react-bulma-components/dist/react-bulma-components.min.css';
-//import bulmaClasses from '../../assets/css//bulma.module.css';
+import filterStyles from '../../assets/css//filterStylesNew.module.css';
+import bulmaClasses from '../../assets/css//bulma.module.css';
 
 const Select = (props) => {
     return(
         <div className={["control", "has-icons-left"].join(' ')}>
-            <div className="select">
+            <div className={["select", filterStyles.padded].join(' ')}>
                 <select name={props.filter.name} >
                     {props.filter.optionList.map( item => <SelectOption 
                         value={item} key={item.toString()}/> )}

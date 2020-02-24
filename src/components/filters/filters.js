@@ -2,6 +2,8 @@ import React from 'react';
 
 import Filter from './filter/filter';
 
+import filterStyles from '../../assets/css/filterStylesNew.module.css';
+
 import { library } from '@fortawesome/fontawesome-svg-core';
 
 import {
@@ -51,13 +53,13 @@ library.add(
     name: 'gearbox',
     title: 'växellåda',
     icon: faGamepad,
-    optionList: [manuell, automatisk]
+    optionList: ['manuell', 'automatisk']
   },
   {
     name: 'fuelType',
     title: 'drivmedel',
     icon: faBatteryThreeQuarters,
-    optionList: [diesel, bensin, elektrik, hybrid]
+    optionList: ['diesel', 'bensin', 'elektrik', 'hybrid']
   },
   {
     name: 'meterFrom',
@@ -87,7 +89,16 @@ library.add(
 
 const Filters = () => {
     return(
-        <Filter filter={filters[0]} />
+        <div className={filterStyles.upperFilters}>
+            <Filter filterConditions={[filters[0], filters[1]]} />
+            <Filter filterConditions={[filters[2], filters[3]]} />
+            <Filter filterConditions={[filters[4]]} />
+            <Filter filterConditions={[filters[5]]} />
+            <Filter filterConditions={[filters[6], filters[7]]} />
+            <Filter filterConditions={[filters[8], filters[9]]} />
+        </div
+        
+        >
     );
 }
 
