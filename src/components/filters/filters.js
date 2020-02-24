@@ -89,16 +89,19 @@ library.add(
 
 const Filters = () => {
     return(
-        <div className={filterStyles.upperFilters}>
-            <Filter filterConditions={[filters[0], filters[1]]} />
-            <Filter filterConditions={[filters[2], filters[3]]} />
-            <Filter filterConditions={[filters[4]]} />
-            <Filter filterConditions={[filters[5]]} />
-            <Filter filterConditions={[filters[6], filters[7]]} />
-            <Filter filterConditions={[filters[8], filters[9]]} />
-        </div
-        
-        >
+        <section>
+            <div className={filterStyles.upperFilters}>
+                <Filter filterConditions={[filters[0], filters[1]]} />
+                <Filter filterConditions={[filters[2], filters[3]]} />
+                <Filter filterConditions={[filters[4]]} />
+                <Filter filterConditions={[filters[5]]} />
+                <Filter filterConditions={[filters[6], filters[7]]} />
+                <Filter filterConditions={[filters[8], filters[9]]} />
+            </div>
+            <div className={filterStyles.lowerFilters}>
+                
+            </div>
+        </section>
     );
 }
 
