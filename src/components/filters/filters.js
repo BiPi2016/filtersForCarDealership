@@ -1,7 +1,6 @@
 import React from 'react';
-import appStyles from './App.module.css';
 
-import Filters from './components/filters/filters';
+import Filter from './filter/filter';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 
@@ -24,26 +23,18 @@ library.add(
   );
 
 
+  const filters =  [{
+    name: 'Price',
+    title: 'Pris',
+    icon: faDollarSign,
+    optionList: [1000, 2000, 3000, 5000],
+  },
+];
 
-class App extends React.Component{
-  
-  state = {
-    Filters: [{
-      name: 'Price',
-      title: 'Pris',
-      optionList: [1000, 2000, 3000, 5000],
-    },
-  ]
-  }
-
-  render() {
+const Filters = () => {
     return(
-      <div className={appStyles.App}>
-        <Filters />
-      </div>
+        <Filter filter={filters[0]} />
     );
-  }
 }
 
-
-export default App;
+export default Filters;

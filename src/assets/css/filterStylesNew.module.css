@@ -2,10 +2,6 @@
     box-sizing: border-box;
 }
 
-.someClass{
-    background-color: red;
-}
-
 .filtersButtonCheckbox,
 .smallScreenFiltersTriggerOpen,
 .smallScreenFiltersTriggerClose {
@@ -19,8 +15,8 @@
 
 .filterTerm {
     width: 300px;
-    border: 2px solid;
 }
+
 
 .centeredFlex {
     display: flex;
