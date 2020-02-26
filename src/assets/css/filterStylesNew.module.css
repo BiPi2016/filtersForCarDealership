@@ -56,6 +56,7 @@ select.filterField {
 .lowerFilters {
     display: flex;
     min-width: auto;
+    padding: 10px;
 }
 /* BodyType Selector */
 .filterBodytype {
@@ -72,13 +73,14 @@ select.filterField {
 }
 
 .labelContainer {
-    padding: 0;
+    padding: 10px;
     border: 1px solid rgba(147, 149, 184, 0.5); ;
     border-radius: 5px;
     position: relative;
 }
 .bodytypeCheckbox:checked ~ .labelContainer {
     background-color: rgba(147, 149, 184, 0.3);
+    color: navy;
     border-color: #5941A9;
     box-shadow: inset 0 0 5px #5941A9;
 }
@@ -105,9 +107,12 @@ select.filterField {
 
 
 /* Colour Selector */
+.colorFilter{
+    margin-left: 4em;
+}
 .colorContainer {
+    min-width: 90%;
     display: flex;
-    flex-wrap: wrap;
 }
 
 .colorCheckboxContainer {
@@ -117,8 +122,8 @@ select.filterField {
 .colorCirlce {
     border: 1px solid transparent;
     border-radius: 50%;
-    width: 1.3em;
-    height: 1.3em;
+    width: 1.5em;
+    height: 1.5em;
 }
 
 .colorCheckbox {
@@ -190,13 +195,15 @@ select.filterField {
     }
     .upperFilters {
         display: block;
+        padding: 10px;
         margin-bottom: 10px; 
     }
     .filterTerm {
-        width: 98%;
+        width: 100%;
     }
 
     .lowerFilters {
+        padding: 10px;
         display: block;
     }
 
@@ -204,13 +211,16 @@ select.filterField {
     .colorFilter {
         min-width: 98%;
     }
+    .colorFilter{
+        margin-left: auto;
+    }
 
     .bodytypeContainer {
         display: flex;
         flex-wrap: wrap;
     }
     .bodytypeTerm {
-        width: 98%;
+        width: 100%;
         display: flex;
         flex-direction: row-reverse;
         justify-content: space-between;

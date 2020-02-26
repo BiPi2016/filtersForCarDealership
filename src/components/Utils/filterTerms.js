@@ -1,6 +1,3 @@
-
-import { library } from '@fortawesome/fontawesome-svg-core';
-
 import {
   faDollarSign, 
   faBatteryThreeQuarters,
@@ -10,16 +7,8 @@ import {
   faTachometerAlt
 } from '@fortawesome/free-solid-svg-icons';
 
-library.add(
-  faDollarSign,  
-  faBatteryThreeQuarters, 
-  faTachometerAlt,
-  faTruckMonster,
-  faGamepad,  
-  faCalendarCheck
-  );
 
-const filterTerms =  [{
+export const filterRanges =  [{
     name: 'priceFrom',
     title: 'Pris Från',
     icon: faDollarSign,
@@ -81,4 +70,25 @@ const filterTerms =  [{
   }
 ];
 
-export default filterTerms;
+export const bodyTypeFilters = [
+  'Sedan', 
+  'Kombi',
+  'Halvkombi', 
+  'SUV', 
+  'Koupe', 
+  'Cab', 
+  'Minibuss',
+  'Pickup'
+];
+
+export const colorFilters = [
+  'white',
+  'black',
+  'gray',
+  'brown',
+  'red',
+  'blue',
+  'green',
+  'yellow'
+];
+
