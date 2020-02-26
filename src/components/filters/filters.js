@@ -1,108 +1,49 @@
 import React from 'react';
 
 import Filter from './filter/filter';
+import filterTerms from '../utils/filterTerms';
+
+import WooCommerce from '../../data/dataInWP';
 
 import filterStyles from '../../assets/css/filterStylesNew.module.css';
 
-import { library } from '@fortawesome/fontawesome-svg-core';
+class Filters extends React.Component {
 
-import {
-  faDollarSign, 
-  faBatteryThreeQuarters,
-  faCalendarCheck,
-  faGamepad,
-  faTruckMonster,
-  faTachometerAlt
-} from '@fortawesome/free-solid-svg-icons';
-
-library.add(
-  faDollarSign,  
-  faBatteryThreeQuarters, 
-  faTachometerAlt,
-  faTruckMonster,
-  faGamepad,  
-  faCalendarCheck
-  );
-
-
-  const filters =  [{
-    name: 'priceFrom',
-    title: 'Pris Från',
-    icon: faDollarSign,
-    optionList: [1000, 2000, 3000, 5000],
-  },
-  {
-    name: 'priceTo',
-    title: 'Pris Till',
-    icon: faDollarSign,
-    optionList: [1000, 2000, 3000, 5000]
-  },
-  {
-    name: 'yearTo',
-    title: 'årsmodell från',
-    icon: faCalendarCheck,
-    optionList: [2020, 2019, 2018, 2017]
-  },
-  {
-    name: 'yearTo',
-    title: 'årsmodell till',
-    icon: faCalendarCheck,
-    optionList: [2020, 2019, 2018, 2017]
-  },
-  {
-    name: 'gearbox',
-    title: 'växellåda',
-    icon: faGamepad,
-    optionList: ['manuell', 'automatisk']
-  },
-  {
-    name: 'fuelType',
-    title: 'drivmedel',
-    icon: faBatteryThreeQuarters,
-    optionList: ['diesel', 'bensin', 'elektrik', 'hybrid']
-  },
-  {
-    name: 'meterFrom',
-    title: 'mätarställning från',
-    icon: faTachometerAlt,
-    optionList: [1000, 2000, 3000, 5000]
-  },
-  {
-    name: 'meterTill',
-    title: 'mätarställning till',
-    icon: faTachometerAlt,
-    optionList: [1000, 2000, 3000, 5000]
-  },
-  {
-    name: 'horsePowerFrom',
-    title: 'hästkraft från',
-    icon: faTruckMonster,
-    optionList: [40, 60, 80, 100]
-  },
-  {
-    name: 'horsePowerTo',
-    title: 'hästkraft till',
-    icon: faTruckMonster,
-    optionList: [40, 60, 80, 100]
+  constructor(props) {
+    super(props);
+    this.state = {
+      products: [],
+      filters: filterTerms
+    }
   }
-];
 
-const Filters = () => {
+  componentDidMount() {
+    console.log(this.state)
+    WooCommerce.get('products')
+    .then( results => {
+      this.setState({products: results.data})
+      console.log(this.state.products);
+    })
+    .catch( err => console.log(err.response.data))
+  }
+
+  render() {
     return(
         <section>
             <div className={filterStyles.upperFilters}>
-                <Filter filterConditions={[filters[0], filters[1]]} />
-                <Filter filterConditions={[filters[2], filters[3]]} />
-                <Filter filterConditions={[filters[4]]} />
-                <Filter filterConditions={[filters[5]]} />
-                <Filter filterConditions={[filters[6], filters[7]]} />
-                <Filter filterConditions={[filters[8], filters[9]]} />
+                <Filter filterConditions={[this.state.filters[0], this.state.filters[1]]} />
+                <Filter filterConditions={[this.state.filters[2], this.state.filters[3]]} />
+                <Filter filterConditions={[this.state.filters[4]]} />
+                <Filter filterConditions={[this.state.filters[5]]} />
+                <Filter filterConditions={[this.state.filters[6], this.state.filters[7]]} />
+                <Filter filterConditions={[this.state.filters[8], this.state.filters[9]]} />
             </div>
             <div className={filterStyles.lowerFilters}>
-                
+                              
             </div>
         </section>
     );
+  }
 }
 
 export default Filters;
