@@ -21,9 +21,12 @@ const Color = (props) => {
             value={props.color} 
             className={filterStyles.colorCheckbox} />
         <label htmlFor={props.color}>
-            <div className={[filterStyles.colorCirlce, filterStyles.centeredFlex].join(' ')}
+            <div 
+            className={[filterStyles.colorCirlce, filterStyles.centeredFlex].join(' ')}
             style={circleStyle}> 
-                <span className={filterStyles.selectedColorTick} style={tickColor}>
+                <span 
+                className={filterStyles.selectedColorTick} 
+                style={tickColor}>
                  <FontAwesomeIcon icon={faCheck} />
                 </span>
             </div>
