@@ -11,9 +11,13 @@ const Select = (props) => {
     return(
         <div className={["control", "has-icons-left"].join(' ')}>
             <div className={["select", filterStyles.padded].join(' ')}>
-                <select name={props.filter.name} >
+                <select name={props.filter.name}
+                    onChange={(evt)=> props.changed(evt)} 
+                    value={props.ranges[props.filter.name]}>
                     {props.filter.optionList.map( item => <SelectOption 
-                        value={item} key={item.toString()} className={filterStyles.selectText} /> )}
+                        value={item} 
+                        key={item.toString()} 
+                        className={filterStyles.selectText} /> )}
                 </select>
             </div>
             <span className={["icon", "is-left"].join(' ')}>

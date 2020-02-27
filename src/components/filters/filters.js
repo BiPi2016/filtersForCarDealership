@@ -17,11 +17,39 @@ class Filters extends React.Component {
     this.state = {
       products: [],
       filters: filterRanges,
+      ranges: {
+        priceFrom: 0,
+        priceTo: 2000,
+        yearFrom: 2010,
+        yearTo: 2020,
+        gearbox: 'automatisk',
+        fuelType: 'diesel',
+        meterFrom: 0,
+        meterTo: 2000,
+        horsePowerFrom: 40,
+        horsePowerTo: 60,
+        },      
       bodyTypes:bodyTypeFilters,
       selectedBodyTypes:[],
       colors: colorFilters,
       selectedColors: []
     }
+    this.onSelectChangeHandler=this.onSelectChangeHandler.bind(this);
+  }
+
+  onSelectChangeHandler = (evt) => {
+    alert('clicked'+ evt.target.name);
+    const name = evt.target.name;
+    const value = evt.target.value;
+    let newRanges = this.state.ranges;
+    newRanges[name] = value;
+    this.setState(() => ({ranges: newRanges
+    }));
+    console.log(this.state.ranges);
+  }
+  
+  handleBtnClick = (props) => {
+
   }
 
   componentDidMount() {
@@ -47,24 +75,42 @@ class Filters extends React.Component {
     .catch( err => console.log(err.response.data))
   }
 
-  handleBtnClick = (props) => {
-
-  }
-
   render() {  
-
-    console.log(this.state);
 
    /*  fetchProducts(); */
     return(
         <section>
             <div className={filterStyles.upperFilters}>
-                <RangeFilter filterConditions={[this.state.filters[0], this.state.filters[1]]} />
-                <RangeFilter filterConditions={[this.state.filters[2], this.state.filters[3]]} />
-                <RangeFilter filterConditions={[this.state.filters[4]]} />
-                <RangeFilter filterConditions={[this.state.filters[5]]} />
-                <RangeFilter filterConditions={[this.state.filters[6], this.state.filters[7]]} />
-                <RangeFilter filterConditions={[this.state.filters[8], this.state.filters[9]]} />
+                <RangeFilter 
+                  filterConditions={[this.state.filters[0], this.state.filters[1]]} 
+                  changed={this.onSelectChangeHandler}
+                  ranges={this.state.ranges}
+                  />
+                <RangeFilter 
+                  filterConditions={[this.state.filters[2], this.state.filters[3]]} 
+                  changed={this.onSelectChangeHandler} 
+                  ranges={this.state.ranges}
+                  />
+                <RangeFilter 
+                  filterConditions={[this.state.filters[4]]} 
+                  changed={this.onSelectChangeHandler} 
+                  ranges={this.state.ranges}
+                  />
+                <RangeFilter 
+                  filterConditions={[this.state.filters[5]]} 
+                  changed={this.onSelectChangeHandler} 
+                  ranges={this.state.ranges}
+                  />
+                <RangeFilter 
+                  filterConditions={[this.state.filters[6], this.state.filters[7]]} 
+                  changed={this.onSelectChangeHandler} 
+                  ranges={this.state.ranges}
+                  />
+                <RangeFilter 
+                  filterConditions={[this.state.filters[8], this.state.filters[9]]}  
+                  changed={this.onSelectChangeHandler}
+                  ranges={this.state.ranges}
+                  />
             </div>
             <div className={filterStyles.lowerFilters}>
               <BodyTypes bodyTypes={this.state.bodyTypes} />

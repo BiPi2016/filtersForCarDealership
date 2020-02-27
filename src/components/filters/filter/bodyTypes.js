@@ -17,7 +17,7 @@ const BodyType = props => {
 
 const BodyTypes = (props) => {
     return(
-        <section className={filterStyles.filterTerm, filterStyles.filterBodyType}>
+        <section className={[filterStyles.filterTerm, filterStyles.filterBodytype].join(' ')}>
             <h3 className={filterStyles.filterHeading}>Karroseri</h3>
             <section className={filterStyles.bodytypeContainer} >
                 {props.bodyTypes.map( bodyType => <BodyType title={bodyType} key={bodyType}/>)}

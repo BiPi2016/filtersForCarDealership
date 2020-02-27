@@ -21,10 +21,10 @@ export const filterRanges =  [{
     optionList: [1000, 2000, 3000, 5000]
   },
   {
-    name: 'yearTo',
+    name: 'yearFrom',
     title: 'årsmodell från',
     icon: faCalendarCheck,
-    optionList: [2020, 2019, 2018, 2017]
+    optionList: [2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012, 2011, 2010]
   },
   {
     name: 'yearTo',
@@ -51,7 +51,7 @@ export const filterRanges =  [{
     optionList: [1000, 2000, 3000, 5000]
   },
   {
-    name: 'meterTill',
+    name: 'meterTo',
     title: 'mätarställning till',
     icon: faTachometerAlt,
     optionList: [1000, 2000, 3000, 5000]

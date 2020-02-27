@@ -13,7 +13,7 @@ const Filter = (props) => {
             <p className={filterStyles.filterHeading}>
                 {filter.title}
             </p>
-            <Select filter={filter} />
+            <Select filter={filter} changed={props.changed} ranges={props.ranges}/>
         </section>);
     }
     if(props.filterConditions.length === 2){
@@ -24,8 +24,8 @@ const Filter = (props) => {
             <p className={filterStyles.filterHeading} >
                 {filterFrom.title}
             </p>
-            <Select filter={filterFrom} />
-            <Select filter={filterTo} />
+            <Select filter={filterFrom} changed={props.changed}  ranges={props.ranges}/>
+            <Select filter={filterTo} changed={props.changed}  ranges={props.ranges}/>
         </section>
         );  
     }
