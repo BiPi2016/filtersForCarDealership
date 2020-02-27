@@ -30,7 +30,7 @@ class Filters extends React.Component {
         horsePowerTo: 60,
         },      
       bodyTypes:bodyTypeFilters,
-      selectedBodyTypes:[],
+      selectedBodyTypes: {test: 'test'},
       colors: colorFilters,
       selectedColors: []
     }
@@ -47,6 +47,17 @@ class Filters extends React.Component {
     }));
     console.log(this.state.ranges);
   }
+
+  onBodyTypeSelectedHandler = (evt) => {
+    let name = evt.target.name;
+    console.log('Bodytype clicked ' + name + ' and is ' + name.checked );
+    console.log(this.state.selectedBodyTypes[name]);
+    this.setState(prevState => {
+      let checked = prevState.selectedBodyTypes;
+      checked[name] = !checked[name];
+      return ({selectedBodyTypes: checked})
+    });
+  }
   
   handleBtnClick = (props) => {
 
@@ -55,11 +66,10 @@ class Filters extends React.Component {
   componentDidMount() {
     console.log(this.state);
 
-    let bodyTypeSelected = [...this.state.selectedBodyTypes]
-    this.state.bodyTypes.map( (bodyType, index) => {
-      bodyTypeSelected[index] = true; 
-    } );
-    this.setState( {selectedBodyTypes: bodyTypeSelected} )
+    let checkedTypes = {};
+
+    this.state.bodyTypes.map( bodyType => checkedTypes[bodyType] = false);
+    this.setState({selectedBodyTypes:checkedTypes});
 
     let selectedColors = [...this.state.selectedColors]
     this.state.colors.map( (color, index) => {
@@ -112,8 +122,12 @@ class Filters extends React.Component {
                   ranges={this.state.ranges}
                   />
             </div>
+            
             <div className={filterStyles.lowerFilters}>
-              <BodyTypes bodyTypes={this.state.bodyTypes} />
+              <BodyTypes bodyTypes={this.state.bodyTypes}  
+                checkedBodyTypes={this.state.selectedBodyTypes}
+                checked={this.onBodyTypeSelectedHandler}
+              />
               <Colors colors={this.state.colors} />
             </div>
         </section>
