@@ -22,7 +22,6 @@ const BodyType = props => {
 }
 
 const BodyTypes = (props) => {
-    console.log('selected boydtypes: ' + props.checkedBodyType);
     return(
         <section className={[filterStyles.filterTerm, filterStyles.filterBodytype].join(' ')}>
             <h3 className={filterStyles.filterHeading}>Karroseri</h3>

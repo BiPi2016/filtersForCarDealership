@@ -32,7 +32,7 @@ class Filters extends React.Component {
       bodyTypes:bodyTypeFilters,
       selectedBodyTypes: {test: 'test'},
       colors: colorFilters,
-      selectedColors: []
+      selectedColors: {someColor: true}
     }
     this.onSelectChangeHandler=this.onSelectChangeHandler.bind(this);
   }
@@ -50,12 +50,21 @@ class Filters extends React.Component {
 
   onBodyTypeSelectedHandler = (evt) => {
     let name = evt.target.name;
-    console.log('Bodytype clicked ' + name + ' and is ' + name.checked );
-    console.log(this.state.selectedBodyTypes[name]);
     this.setState(prevState => {
-      let checked = prevState.selectedBodyTypes;
-      checked[name] = !checked[name];
-      return ({selectedBodyTypes: checked})
+      console.log('Bodytype clicked ' + name );
+      let checkedBodyTypes = prevState.selectedBodyTypes;
+      console.log('Bodytypes selected untill now: ' + checkedBodyTypes);
+      checkedBodyTypes[name] = !checkedBodyTypes[name];
+      return ({selectedBodyTypes: checkedBodyTypes})
+    });
+  }
+
+  onColorSelectedHandler = (evt) => {
+    let colorName = evt.target.name;
+    this.setState( prevState => {
+      let colors = prevState.selectedColors;
+      colors[colorName] = !colors[colorName];
+      return({selectedColors: colors});
     });
   }
   
@@ -67,16 +76,13 @@ class Filters extends React.Component {
     console.log(this.state);
 
     let checkedTypes = {};
-
     this.state.bodyTypes.map( bodyType => checkedTypes[bodyType] = false);
     this.setState({selectedBodyTypes:checkedTypes});
 
-    let selectedColors = [...this.state.selectedColors]
-    this.state.colors.map( (color, index) => {
-      selectedColors[index] = true;
-    })
-    this.setState({selectedColors: selectedColors});
-    
+    let checkedColors = {};
+    this.state.colors.map( color => checkedColors.color = false);
+    this.setState({selectedColors: checkedColors});
+
     WooCommerce.get('products')
     .then( results => {
       this.setState({products: results.data})
@@ -124,11 +130,13 @@ class Filters extends React.Component {
             </div>
             
             <div className={filterStyles.lowerFilters}>
-              <BodyTypes bodyTypes={this.state.bodyTypes}  
-                checkedBodyTypes={this.state.selectedBodyTypes}
+              <BodyTypes 
+                bodyTypes={this.state.bodyTypes}  
                 checked={this.onBodyTypeSelectedHandler}
               />
-              <Colors colors={this.state.colors} />
+              <Colors 
+                colors={this.state.colors} 
+                checked={this.onColorSelectedHandler}/>
             </div>
         </section>
     );

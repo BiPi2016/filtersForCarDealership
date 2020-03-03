@@ -19,7 +19,9 @@ const Color = (props) => {
             name={props.color} 
             id={props.color} 
             value={props.color} 
-            className={filterStyles.colorCheckbox} />
+            className={filterStyles.colorCheckbox} 
+            onChange={props.checked}
+            />
         <label htmlFor={props.color}>
             <div 
             className={[filterStyles.colorCirlce, filterStyles.centeredFlex].join(' ')}
@@ -40,7 +42,10 @@ const Colors = (props) => (
     <section className={[filterStyles.filterTerm, filterStyles.colorFilter].join(' ')} >
         <h3 className={filterStyles.filterHeading}>Färg</h3>
         <section className={filterStyles.colorContainer} >
-            {props.colors.map( color => <Color color={color} key={color} />)}
+            {props.colors.map( color => <Color 
+                color={color} 
+                key={color} 
+                checked={props.checked} />)}
         </section>
     </section>
 );
